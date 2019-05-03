@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 
 import { appRoutes } from './app.routing';
 
@@ -18,10 +17,6 @@ import { IniciandoComponent } from './padrao/iniciando/iniciando.component';
 import { AjudaComponent } from './padrao/ajuda/ajuda.component';
 import { ResolucoesComponent } from './padrao/resolucoes/resolucoes.component';
 
-import { AutenticacaoComponent } from './autenticacao/autenticacao.component';
-import { CadastrarComponent } from './autenticacao/cadastrar/cadastrar.component';
-import { EntrarComponent } from './autenticacao/entrar/entrar.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +26,9 @@ import { EntrarComponent } from './autenticacao/entrar/entrar.component';
     IniciarComponent,
     IniciandoComponent,
     AjudaComponent,
-    ResolucoesComponent,
-    AutenticacaoComponent,
-    CadastrarComponent,
-    EntrarComponent
+    ResolucoesComponent
   ],
   imports: [
-    FormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes)

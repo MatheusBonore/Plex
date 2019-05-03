@@ -8,10 +8,6 @@ import { IniciandoComponent } from './padrao/iniciando/iniciando.component';
 import { AjudaComponent } from './padrao/ajuda/ajuda.component';
 import { ResolucoesComponent } from './padrao/resolucoes/resolucoes.component';
 
-import { AutenticacaoComponent } from './autenticacao/autenticacao.component';
-import { EntrarComponent } from './autenticacao/entrar/entrar.component';
-import { CadastrarComponent } from './autenticacao/cadastrar/cadastrar.component';
-
 export const appRoutes: Routes = [
   {
     path: '',
@@ -37,20 +33,7 @@ export const appRoutes: Routes = [
     ]
   }, {
     path: 'autenticacao',
-    component: AutenticacaoComponent,
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'entrar'
-      }, {
-        path: 'entrar',
-        component: EntrarComponent
-      }, {
-        path: 'cadastrar',
-        component: CadastrarComponent
-      }
-    ]
+    loadChildren: './autenticacao/autenticacao.module#AutenticacaoModule'
   }, {
     path: '**',
     pathMatch: 'full',

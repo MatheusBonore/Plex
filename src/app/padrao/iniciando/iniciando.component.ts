@@ -9,7 +9,9 @@ export class IniciandoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() :void {
+
+    
   }
 
 }
