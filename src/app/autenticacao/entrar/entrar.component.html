@@ -1,20 +1,20 @@
-<form class="form-signin" #form="ngForm" (ngSubmit)="efetuarLogin(form)">
-  <div class="form-group">
-    <label for="inputEmail">Email address</label>
-    <input type="email" id="inputEmail" name="email" class="form-control" aria-describedby="emailHelp"
-      placeholder="Enter email" autofocus required [(ngModel)]="formLogin.email" #email="ngModel">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="inputSenha">Password</label>
-    <input type="password" id="inputSenha" name="senha" class="form-control" placeholder="Password" required
-      [(ngModel)]="formLogin.senha" #senha="ngModel">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary btn-block" type="submit">Entrar</button>
-  </div>
-</form>
+<div class="container mt-5">
+  <form class="form-signin" #form="ngForm" (ngSubmit)="efetuarLogin(form)">
+    <h1 class="h3 mb-3 font-weight-normal">Entrar</h1>
+    <div class="form-group">
+      <label for="inputEmail">Endereço de E-mail</label>
+      <input type="email" id="inputEmail" name="email" class="form-control" aria-describedby="emailHelp"
+        placeholder="Digite e-mail" autofocus required [(ngModel)]="formLogin.email" #email="ngModel">
+      <small id="emailHelp" class="form-text text-muted">Nós nunca vamos compartilhar seu e-mail com mais
+        ninguém.</small>
+    </div>
+    <div class="form-group">
+      <label for="inputSenha">Senha</label>
+      <input type="password" id="inputSenha" name="senha" class="form-control" placeholder="Senha" required
+        [(ngModel)]="formLogin.senha" #senha="ngModel">
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block" type="submit">Entrar</button>
+    </div>
+  </form>
+</div>
