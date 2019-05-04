@@ -6,7 +6,7 @@ import { Usuario } from 'src/app/model/usuario.interface';
 @Component({
   selector: 'app-entrar',
   templateUrl: './entrar.component.html',
-  styleUrls: ['./entrar.component.css']
+  styleUrls: ['../autenticacao.component.css']
 })
 export class EntrarComponent implements OnInit {
 
