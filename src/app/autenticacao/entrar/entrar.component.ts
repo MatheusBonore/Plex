@@ -20,9 +20,7 @@ export class EntrarComponent implements OnInit {
   ngOnInit(): void {}
 
   public efetuarLogin(form: NgForm): void {
-    console.log(this.formLogin);
-    if (form.valid) {
-      console.log(this.formLogin);
-    }
+    console.log(form.valid)
+    if (form.valid) { }
   }
 }
