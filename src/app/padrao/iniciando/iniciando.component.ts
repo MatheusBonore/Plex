@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Resolucao } from 'src/app/model/resolucao.class';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-iniciando',
@@ -8,10 +10,18 @@ import { Resolucao } from 'src/app/model/resolucao.class';
 })
 export class IniciandoComponent implements OnInit {
 
-  resolucaoModel = new Resolucao(null,null);
+  @ViewChild('formIniciando') public formIniciando :NgForm;
 
-  constructor() { }
+  public resolucaoModel :Resolucao = new Resolucao(null,null);
+
+  constructor(
+    private router :Router
+  ) { }
 
   ngOnInit():void { }
 
+  public proximoPasso() :void {
+
+    this.router.navigateByUrl('resolucoes');
+  }
 }
