@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit {
     console.log();
    }
 
-  ngOnInit(): void {}
+  ngOnInit():void { }
 
   public seEncontraNoLink(link: Link): boolean {
     return this.location.path() === link.path;

@@ -6,6 +6,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This name was generated with [PatorJK](http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Doh&t=Ple).
 
+https://appdividend.com/2018/10/30/angular-7-form-validation-example-tutorial/
+
+https://www.youtube.com/watch?v=U8FfRRLFmSY&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=40
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

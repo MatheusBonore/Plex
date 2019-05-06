@@ -1,35 +1,77 @@
-<div class="container my-5">
-  <h2>Vamos começar.</h2>
-  <p>Para que possamos proseguir, preciso de pequenas informações que ajudarão resolver grandes problemas.</p>
-
-  <div class="row">
-    <div class="col-sm-8">
-      <form>
-        <div class="jumbotron bg-primary text-white p-0 pl-5 pr-5 pt-3 pb-3">
-          <h4>Primeira Parte</h4>
-          <div class="form-group">
-            <label for="formGroupExampleInput">Quantas variáveis de decisão tem o problema?</label>
-            <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Exemplo: 1" min="1"
-              required>
-          </div>
-          <div class="form-group">
-            <label for="formGroupExampleInput2">Quantas restrições?</label>
-            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Exemplo: 2" min="1"
-              required>
+<form #resolucaoForm="ngForm">
+  <div id="iniciando" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="container my-5">
+      <div class="carousel-inner">
+        <div class="carousel-item active" ngModelGroup="primeiraParte">
+          <h2>Vamos começar.</h2>
+          <p>Para que possamos proseguir, preciso de pequenas informações que ajudarão resolver grandes problemas.</p>
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="jumbotron bg-primary text-white p-0 pl-5 pr-5 pt-3 pb-3">
+                <h4>Primeira Parte</h4>
+                <small class="text-white">
+                  Selecione um valor que não seja menor que 1 para todos os campos.
+                </small>
+                <div class="form-group">
+                  <label for="quantas_decisao">Quantas variáveis de decisão tem o problema?</label>
+                  <input type="number" required #quantas_decisao="ngModel" pattern="^\d{1}"
+                    [class.is-invalid]="quantas_decisao.invalid && quantas_decisao.touched" class="form-control"
+                    id="quantas_decisao" placeholder="Exemplo: 1" name="quantas_decisao"
+                    [ngModel]="resolucaoModel.quantas_decisao">
+                </div>
+                <div class="form-group">
+                  <label for="quantas_restricoes">Quantas restrições?</label>
+                  <input type="number" required #quantas_restricoes="ngModel" pattern=""
+                    [class.is-invalid]="quantas_restricoes.invalid && quantas_restricoes.touched" class="form-control"
+                    id="quantas_restricoes" placeholder="Exemplo: 2" name="quantas_restricoes"
+                    [ngModel]="resolucaoModel.quantas_restricoes">
+                </div>
+              </div>
+              <div class="form-group d-flex flex-row-reverse">
+                <a class="btn btn-success disabled" href="#iniciando" tabindex="-1" data-slide="next" role="button"
+                  aria-disabled="true">Avançar</a>
+              </div>
+            </div>
+            <div class="col-sm">
+              <pre>{{ resolucaoModel | json }}</pre>
+              <hr />
+              <pre>{{ resolucaoForm.value | json }}</pre>
+              <div class="d-line p-3 bg-light text-dark">
+                <strong>Dica:</strong> Pense em todas as variáveis possiveis!
+              </div>
+            </div>
           </div>
         </div>
-        <div class="d-flex flex-row-reverse">
-          <div class="form-group">
-            <button type="submit" class="btn btn-success">Avançar</button>
+
+        <div class="carousel-item" ngModelGroup="segundaParte">
+          <h2>Agora vamos identificar seu objetivo.</h2>
+          <div class="form-inline">
+            <label for="selectObjetivo" class="my-1 mr-2">Para que possamos proseguir, preciso identificar o objetivo da
+              função.</label>
+            <select class="custom-select my-1 mr-sm-2" id="selectObjetivo">
+              <option value="1" selected>Maximizar</option>
+              <option value="2">Minimizar</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="jumbotron bg-primary text-white p-0 pl-5 pr-5 pt-3 pb-3">
+                <h4>Segunda Parte</h4>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Função:</label>
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">restrições:</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <a class="btn btn-danger" href="#iniciando" data-slide="prev" role="button">Voltar</a>
+                <button class="btn btn-success" type="submit">Concluir</button>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
-
-    <div class="col-sm">
-      <div class="d-line p-3 bg-light text-dark">
-        <strong>Dica:</strong> Pense em todas as variáveis possiveis!
       </div>
     </div>
   </div>
-</div>
+</form>

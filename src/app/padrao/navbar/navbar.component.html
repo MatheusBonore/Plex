@@ -12,7 +12,6 @@
         </li>
       </ul>
       <ul class="navbar-nav">
-        <!-- routerLink="/entrar" -->
         <div class="dropdown show">
           <a class="nav-link dropdown-toggle" id="dropdown-menu" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Entrar</a>
@@ -20,17 +19,17 @@
             <form class="px-4 py-3">
               <div class="form-group">
                 <label for="exampleDropdownFormEmail1">Endereço de E-mail</label>
-                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@exemplo.com">
+                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@exemplo.com" required>
               </div>
               <div class="form-group">
                 <label for="exampleDropdownFormPassword1">Senha</label>
-                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Senha">
+                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Senha" required>
               </div>
               <button type="submit" class="btn btn-primary">Entrar</button>
             </form>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Novo por aqui? Cadastrar</a>
-            <a class="dropdown-item" href="#">Esqueceu a senha?</a>
+            <a class="dropdown-item" routerLink="/autenticacao/cadastrar">Novo por aqui? Cadastrar</a>
+            <!-- <a class="dropdown-item" href="#">Esqueceu a senha?</a> -->
           </div>
         </div>
       </ul>

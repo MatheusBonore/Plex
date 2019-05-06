@@ -9,7 +9,6 @@ export class AutenticacaoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit():void { }
 
 }

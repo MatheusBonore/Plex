@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Resolucao } from 'src/app/model/resolucao.class';
 
 @Component({
   selector: 'app-iniciando',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IniciandoComponent implements OnInit {
 
+  resolucaoModel = new Resolucao(null,null);
+
   constructor() { }
 
-  ngOnInit() :void { }
+  ngOnInit():void { }
 
 }

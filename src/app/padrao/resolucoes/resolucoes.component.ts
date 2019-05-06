@@ -9,7 +9,6 @@ export class ResolucoesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit():void { }
 
 }

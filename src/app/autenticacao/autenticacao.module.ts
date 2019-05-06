@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { autenticacaoRoutes } from './autenticacao.routing';
@@ -15,7 +14,6 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
     CadastrarComponent
   ],
   imports: [
-    FormsModule,
     RouterModule.forChild(autenticacaoRoutes)
   ],
   providers: []
