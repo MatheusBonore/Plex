@@ -2,75 +2,55 @@
   <div id="iniciando" class="carousel slide" data-ride="carousel" data-interval="false">
     <div class="container my-5">
       <div class="carousel-inner">
+
         <div class="carousel-item active" ngModelGroup="primeiraParte">
           <h2>Vamos começar.</h2>
           <p>Para que possamos proseguir, preciso de pequenas informações que ajudarão resolver grandes problemas.</p>
-          <form (ngSubmit)="formIniciando.valid && proximoPasso()" #formIniciando="ngForm">
-            <div class="row">
-              <div class="col-sm-8">
-                <div class="jumbotron bg-primary text-white p-0 pl-5 pr-5 pt-3 pb-3">
-                  <h4>Primeira Parte</h4>
-                  <small class="text-white">
-                    Selecione um valor que não seja menor que 1 para todos os campos.
-                  </small>
-                  <div class="form-group">
-                    <label for="quantas_decisao">Quantas variáveis de decisão tem o problema?</label>
-                    <input
-                      type="number"
-                      required
-                      min="0"
-                      #quantas_decisao="ngModel"
-                      [class.is-invalid]="quantas_decisao.invalid && (!quantas_decisao.pristine || formIniciando.submitted)"
-                      class="form-control"
-                      id="quantas_decisao"
-                      placeholder="Exemplo: 1"
-                      name="quantas_decisao"
-                      [ngModel]="resolucaoModel.quantas_decisao"
-                    >
-                  </div>
-                  <div class="form-group">
-                    <label for="quantas_restricoes">Quantas restrições?</label>
-                    <input
-                      type="number"
-                      required
-                      #quantas_restricoes="ngModel"
-                      [class.is-invalid]="quantas_restricoes.invalid && (!quantas_restricoes.pristine || formIniciando.submitted)"
-                      class="form-control"
-                      id="quantas_restricoes"
-                      placeholder="Exemplo: 2"
-                      name="quantas_restricoes"
-                      [ngModel]="resolucaoModel.quantas_restricoes"
-                    >
-                  </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="jumbotron bg-primary text-white p-0 pl-5 pr-5 pt-3 pb-3">
+                <h4>Primeira Parte</h4>
+                <small class="text-white">
+                  Selecione um valor que não seja menor que 1 para todos os campos.
+                </small>
+                <div class="form-group">
+                  <label for="quantas_decisao">Quantas variáveis de decisão tem o problema?</label>
+                  <input type="number" required #quantas_decisao="ngModel"
+                    [class.is-invalid]="quantas_decisao.invalid && (!quantas_decisao.pristine || resolucaoForm.submitted)"
+                    class="form-control" id="quantas_decisao" placeholder="Exemplo: 1" name="quantas_decisao"
+                    [ngModel]="resolucaoModel.quantas_decisao" minlength="1">
                 </div>
-                <div class="form-group d-flex flex-row-reverse">
-                  <button type="submit" class="btn btn-success">
-                    Avançar
-                  </button>
-                  <!-- <a class="btn btn-success disabled" href="#iniciando" tabindex="-1" data-slide="next" role="button"
-                    aria-disabled="true">Avançar</a> -->
+                <div class="form-group">
+                  <label for="quantas_restricoes">Quantas restrições?</label>
+                  <input type="number" required #quantas_restricoes="ngModel"
+                    [class.is-invalid]="quantas_restricoes.invalid && (!quantas_restricoes.pristine || resolucaoForm.submitted)"
+                    class="form-control" id="quantas_restricoes" placeholder="Exemplo: 2" name="quantas_restricoes"
+                    [ngModel]="resolucaoModel.quantas_restricoes" minlength="1">
                 </div>
               </div>
-              <div class="col-sm">
-                <pre>{{ resolucaoModel | json }}</pre>
-                <hr />
-                <pre>{{ resolucaoForm.value | json }}</pre>
-                <div class="d-line p-3 bg-light text-dark">
-                  <strong>Dica:</strong> Pense em todas as variáveis possiveis!
-                </div>
+              <div class="form-group d-flex flex-row-reverse">
+                <a class="btn btn-success" [class.disabled]="quantas_restricoes.invalid || quantas_decisao.invalid"
+                  href="#iniciando" tabindex="-1" data-slide="next" role="button" aria-disabled="true" (click)="proximoPasso()">Avançar</a>
               </div>
             </div>
-          </form>
+            <div class="col-sm">
+              <div class="d-line p-3 bg-light text-dark">
+                <strong>Dica:</strong> Pense em todas as variáveis possiveis!
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="carousel-item" ngModelGroup="segundaParte">
           <h2>Agora vamos identificar seu objetivo.</h2>
           <div class="form-inline">
-            <label for="selectObjetivo" class="my-1 mr-2">Para que possamos proseguir, preciso identificar o objetivo da
-              função.</label>
-            <select class="custom-select my-1 mr-sm-2" id="selectObjetivo">
-              <option value="1" selected>Maximizar</option>
-              <option value="2">Minimizar</option>
+            <label for="qual_objetivo" class="my-1 mr-2">Para que possamos proseguir, preciso identificar o objetivo
+              da função.</label>
+            <select required #qual_objetivo="ngModel"
+              [class.is-invalid]="qual_objetivo.invalid && (!qual_objetivo.pristine || resolucaoForm.submitted)"
+              class="custom-select my-1 mr-sm-2" id="qual_objetivo" name="qual_objetivo"
+              [ngModel]="resolucaoModel.qual_objetivo">
+              <option *ngFor="let opcao of opcoes" value="{{ opcao.value }}">{{ opcao.nome }}</option>
             </select>
           </div>
           <div class="row">
@@ -79,6 +59,12 @@
                 <h4>Segunda Parte</h4>
                 <div class="form-group">
                   <label for="formGroupExampleInput">Função:</label>
+                  <div class="form-inline">
+                      <input type="number" class="form-control mb-1 mr-sm-1" size="2">
+                      <input type="number" class="form-control mb-1 mr-sm-1" size="2" disabled> +
+                      <input type="number" class="form-control mb-1 mr-sm-1" size="2">
+                      <input type="number" class="form-control mb-1 mr-sm-1" size="2" disabled> 
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="formGroupExampleInput2">restrições:</label>
@@ -90,8 +76,14 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
+
+      <pre>{{ resolucaoModel | json }}</pre>
+      <hr />
+      <pre>{{ resolucaoForm.value | json }}</pre>
+
     </div>
   </div>
 </form>

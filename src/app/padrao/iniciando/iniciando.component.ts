@@ -3,6 +3,13 @@ import { Resolucao } from 'src/app/model/resolucao.class';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+declare interface Opcao {
+  nome: string;
+  value: boolean;
+}
+
+declare type Opcoes = Opcao[];
+
 @Component({
   selector: 'app-iniciando',
   templateUrl: './iniciando.component.html',
@@ -10,18 +17,25 @@ import { Router } from '@angular/router';
 })
 export class IniciandoComponent implements OnInit {
 
-  @ViewChild('formIniciando') public formIniciando :NgForm;
+  @ViewChild('resolucaoForm') public resolucaoForm :NgForm;
 
-  public resolucaoModel :Resolucao = new Resolucao(null,null);
+  public resolucaoModel :Resolucao = new Resolucao(null,null,true);
+  public opcoes: Opcoes = [
+    {
+      nome: 'Maximizar',
+      value: true
+    }, {
+      nome: 'Minimizar',
+      value: false,
+    }
+  ];
 
-  constructor(
-    private router :Router
-  ) { }
+  constructor(private router :Router) { }
 
   ngOnInit():void { }
 
   public proximoPasso() :void {
-
-    this.router.navigateByUrl('resolucoes');
+    console.log(this.resolucaoForm.value)
+    // this.router.navigateByUrl('resolucoes');
   }
 }

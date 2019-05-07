@@ -31,9 +31,7 @@ export class NavbarComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router, private location: Location) {
-    console.log();
-   }
+  constructor(private router: Router, private location: Location) { }
 
   ngOnInit():void { }
 
