@@ -19,7 +19,7 @@ export class IniciandoComponent implements OnInit {
 
   @ViewChild('resolucaoForm') public resolucaoForm :NgForm;
 
-  public resolucaoModel :Resolucao = new Resolucao(null,null,true);
+  public resolucaoModel :Resolucao = new Resolucao(null,null,true,null);
   public opcoes: Opcoes = [
     {
       nome: 'Maximizar',
