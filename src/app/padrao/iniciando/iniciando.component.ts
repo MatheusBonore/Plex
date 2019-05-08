@@ -34,8 +34,9 @@ export class IniciandoComponent implements OnInit {
 
   ngOnInit():void { }
 
-  public proximoPasso() :void {
-    console.log(this.resolucaoForm.value)
+  public proximoPasso(r: NgForm) :void {
+    console.log(r.value.primeiraParte.quantas_decisao)
+    console.log(r.value.primeiraParte.quantas_restricao)
     // this.router.navigateByUrl('resolucoes');
   }
 }

@@ -21,16 +21,16 @@
                     [ngModel]="resolucaoModel.quantas_decisao" minlength="1">
                 </div>
                 <div class="form-group">
-                  <label for="quantas_restricoes">Quantas restrições?</label>
-                  <input type="number" required #quantas_restricoes="ngModel"
-                    [class.is-invalid]="quantas_restricoes.invalid && (!quantas_restricoes.pristine || resolucaoForm.submitted)"
-                    class="form-control" id="quantas_restricoes" placeholder="Exemplo: 2" name="quantas_restricoes"
-                    [ngModel]="resolucaoModel.quantas_restricoes" minlength="1">
+                  <label for="quantas_restricao">Quantas restrições?</label>
+                  <input type="number" required #quantas_restricao="ngModel"
+                    [class.is-invalid]="quantas_restricao.invalid && (!quantas_restricao.pristine || resolucaoForm.submitted)"
+                    class="form-control" id="quantas_restricao" placeholder="Exemplo: 2" name="quantas_restricao"
+                    [ngModel]="resolucaoModel.quantas_restricao" minlength="1">
                 </div>
               </div>
               <div class="form-group d-flex flex-row-reverse">
-                <a class="btn btn-success" [class.disabled]="quantas_restricoes.invalid || quantas_decisao.invalid"
-                  href="#iniciando" tabindex="-1" data-slide="next" role="button" aria-disabled="true" (click)="proximoPasso()">Avançar</a>
+                <a class="btn btn-success" [class.disabled]="quantas_restricao.invalid || quantas_decisao.invalid"
+                  href="#iniciando" tabindex="-1" data-slide="next" role="button" aria-disabled="true" (click)="proximoPasso(resolucaoForm)">Avançar</a>
               </div>
             </div>
             <div class="col-sm">
