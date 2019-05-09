@@ -1,6 +1,7 @@
 <div class="container my-5">
   <h2>Bem-vindo a ferramenta mais legal.</h2>
-  <p class="text-justify"><strong>Hello World!</strong> Seja bem vindo ao <strong>Plex</strong>, a ferramenta que pode te auxiliar a realizar
+  <p class="text-justify"><strong>Hello World!</strong> Seja bem vindo ao <strong>Plex</strong>, a ferramenta que pode
+    te auxiliar a realizar
     tomada de decisões mais eficientes e eficazes! Com o <strong>Plex</strong>, será muito mais fácil decidir quais as
     melhores decisões a serem tomadas para dar um <strong>UP</strong> nas suas conquistas! E assim, tirar aquele sonho
     tão desejado do papel!</p>
@@ -8,7 +9,8 @@
   <div class="d-flex flex-row-reverse">
     <h2>Pra que serve essa ferramenta?</h2>
   </div>
-  <p class="text-justify">O <strong>Plex</strong> veio para revolucionar a forma como você olha para seus negôcios. Com essa ferramenta, você
+  <p class="text-justify">O <strong>Plex</strong> veio para revolucionar a forma como você olha para seus negôcios. Com
+    essa ferramenta, você
     possuirá o poder de tomar a melhor decisão em apenas alguns cliques, isso porque te poupamos de usar seu tempo
     realizando uma infinidade cálculos altamente complexos, afinal, tempo é dinheiro! E falando em dinheiro, o
     <strong>Plex</strong> veio para sanar suas dificuldades, te indicando qual produto deverá produzir em maior escala,
@@ -19,7 +21,7 @@
     <div class="col-md-4">
       <button class="btn btn-lg btn-primary btn-block" (click)="iniciarResolucao()">Iniciar Resolução</button>
       <div class="customControl custom-checkbox my-3 mr-sm-2" style="margin-left:25px">
-        <input type="checkbox" class="custom-control-input" id="customControlInline">
+        <input type="checkbox" class="custom-control-input" id="customControlInline" [(ngModel)]="naoMostrarNovamente">
         <label class="custom-control-label" for="customControlInline">Não mostrar novamente no próximo acesso.</label>
       </div>
     </div>

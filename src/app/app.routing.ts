@@ -4,7 +4,10 @@ import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.componen
 
 import { PadraoComponent } from './padrao/padrao.component';
 import { IniciarComponent } from './padrao/iniciar/iniciar.component';
+
 import { IniciandoComponent } from './padrao/iniciando/iniciando.component';
+import { NaoMostrarIntroducaoGuard } from './guards/nao-mostrar-introducao/nao-mostrar-introducao.guard';
+
 import { AjudaComponent } from './padrao/ajuda/ajuda.component';
 import { ResolucoesComponent } from './padrao/resolucoes/resolucoes.component';
 
@@ -19,7 +22,8 @@ export const appRoutes: Routes = [
     children: [
       {
         path: 'iniciar',
-        component: IniciarComponent
+        component: IniciarComponent,
+        canActivate: [NaoMostrarIntroducaoGuard]
       }, {
         path: 'iniciando',
         component: IniciandoComponent
@@ -30,7 +34,7 @@ export const appRoutes: Routes = [
         path: 'resolucoes',
         component: ResolucoesComponent
       }
-    ]   
+    ]
   }, {
     path: 'autenticacao',
     loadChildren: './autenticacao/autenticacao.module#AutenticacaoModule'

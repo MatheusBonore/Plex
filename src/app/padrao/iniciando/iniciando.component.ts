@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Resolucao } from 'src/app/model/resolucao.class';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PlexService } from 'src/app/services/plex/plex.service';
 
 declare interface Opcao {
   nome: string;
@@ -17,9 +17,8 @@ declare type Opcoes = Opcao[];
 })
 export class IniciandoComponent implements OnInit {
 
-  @ViewChild('resolucaoForm') public resolucaoForm :NgForm;
+  @ViewChild('resolucaoForm') public resolucaoForm: NgForm;
 
-  public resolucaoModel :Resolucao = new Resolucao(null,null,true,null);
   public opcoes: Opcoes = [
     {
       nome: 'Maximizar',
@@ -30,13 +29,14 @@ export class IniciandoComponent implements OnInit {
     }
   ];
 
-  constructor(private router :Router) { }
+  constructor(
+    private router: Router,
+    private plexService: PlexService
+  ) { }
 
-  ngOnInit():void { }
+  ngOnInit(): void { }
 
-  public proximoPasso(r: NgForm) :void {
-    console.log(r.value.primeiraParte.quantas_decisao)
-    console.log(r.value.primeiraParte.quantas_restricao)
+  public proximoPasso(r: NgForm): void {
     // this.router.navigateByUrl('resolucoes');
   }
 }

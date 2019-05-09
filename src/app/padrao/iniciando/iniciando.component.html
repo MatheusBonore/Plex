@@ -18,19 +18,20 @@
                   <input type="number" required #quantas_decisao="ngModel"
                     [class.is-invalid]="quantas_decisao.invalid && (!quantas_decisao.pristine || resolucaoForm.submitted)"
                     class="form-control" id="quantas_decisao" placeholder="Exemplo: 1" name="quantas_decisao"
-                    [ngModel]="resolucaoModel.quantas_decisao" minlength="1">
+                    [(ngModel)]="plexService.quantas_decisao" minlength="1">
                 </div>
                 <div class="form-group">
                   <label for="quantas_restricao">Quantas restrições?</label>
                   <input type="number" required #quantas_restricao="ngModel"
                     [class.is-invalid]="quantas_restricao.invalid && (!quantas_restricao.pristine || resolucaoForm.submitted)"
                     class="form-control" id="quantas_restricao" placeholder="Exemplo: 2" name="quantas_restricao"
-                    [ngModel]="resolucaoModel.quantas_restricao" minlength="1">
+                    [(ngModel)]="plexService.quantas_restricao" minlength="1">
                 </div>
               </div>
               <div class="form-group d-flex flex-row-reverse">
                 <a class="btn btn-success" [class.disabled]="quantas_restricao.invalid || quantas_decisao.invalid"
-                  href="#iniciando" tabindex="-1" data-slide="next" role="button" aria-disabled="true" (click)="proximoPasso(resolucaoForm)">Avançar</a>
+                  href="#iniciando" tabindex="-1" data-slide="next" role="button" aria-disabled="true"
+                  (click)="proximoPasso(resolucaoForm)">Avançar</a>
               </div>
             </div>
             <div class="col-sm">
@@ -49,7 +50,7 @@
             <select required #qual_objetivo="ngModel"
               [class.is-invalid]="qual_objetivo.invalid && (!qual_objetivo.pristine || resolucaoForm.submitted)"
               class="custom-select my-1 mr-sm-2" id="qual_objetivo" name="qual_objetivo"
-              [ngModel]="resolucaoModel.qual_objetivo">
+              [ngModel]="plexService.qual_objetivo">
               <option *ngFor="let opcao of opcoes" value="{{ opcao.value }}">{{ opcao.nome }}</option>
             </select>
           </div>
@@ -60,14 +61,22 @@
                 <div class="form-group">
                   <label for="formGroupExampleInput">Função:</label>
                   <div class="form-inline">
-                      <input type="number" class="form-control mb-1 mr-sm-1" size="2">
-                      <input type="number" class="form-control mb-1 mr-sm-1" size="2" disabled> +
-                      <input type="number" class="form-control mb-1 mr-sm-1" size="2">
-                      <input type="number" class="form-control mb-1 mr-sm-1" size="2" disabled> 
+                    <ng-container *ngFor="let variavel of plexService.funcaoObjetivo.variaveis; let i = index;">
+                      <input type="number" #funcao="ngModel" class="form-control mb-1 mr-sm-1" name="funcao_{{i}}"
+                        size="2" [(ngModel)]="variavel.valor">
+                    </ng-container>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="formGroupExampleInput2">restrições:</label>
+                  <label for="formGroupExampleInput2">Restrições:</label>
+                  <ng-container *ngFor="let restricao of plexService.restricoes; let ir = index;">
+                    <div class="form-inline">
+                      <ng-container *ngFor="let variavel of restricao.variaveis; let iv = index;">
+                        <input type="number" #restricao="ngModel" class="form-control mb-1 mr-sm-1"
+                          name="restricao_{{ir}}_{{iv}}" size="2" [(ngModel)]="variavel.valor">
+                      </ng-container>
+                    </div>
+                  </ng-container>
                 </div>
               </div>
               <div class="form-group">
@@ -80,8 +89,6 @@
         </div>
       </div>
 
-      <pre>{{ resolucaoModel | json }}</pre>
-      <hr />
       <pre>{{ resolucaoForm.value | json }}</pre>
 
     </div>
