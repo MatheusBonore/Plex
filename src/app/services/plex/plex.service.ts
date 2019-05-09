@@ -25,14 +25,14 @@ export class PlexService {
     console.log(3)
     this._aplicarNumVariaveisRestricao(numDecisoes);
   }
-
-  public get quantas_decisao(): number {
-    return this._quantas_decisao;
-  }
-
+  
   public set quantas_restricao(numRestricoes: number) {
     this._quantas_restricao = numRestricoes;
     this._aplicarNumRestricoes(numRestricoes);
+  }
+
+  public get quantas_decisao(): number {
+    return this._quantas_decisao;
   }
 
   private get _novaVariavel(): Variavel {
