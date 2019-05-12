@@ -27,11 +27,18 @@
                     class="form-control" id="quantas_restricao" placeholder="Exemplo: 2" name="quantas_restricao"
                     [(ngModel)]="plexService.quantas_restricao" minlength="1">
                 </div>
+                <div class="form-group">
+                  <label for="quantas_interacao">Quantas iterações devo continuar?</label>
+                  <input type="number" required #quantas_interacao="ngModel"
+                    [class.is-invalid]="quantas_interacao.invalid && (!quantas_interacao.pristine || resolucaoForm.submitted)"
+                    class="form-control" id="quantas_interacao" placeholder="Exemplo: 3" name="quantas_interacao"
+                    [(ngModel)]="plexService.quantas_interacao" minlength="1">
+                </div>
               </div>
               <div class="form-group d-flex flex-row-reverse">
-                <a class="btn btn-success" [class.disabled]="quantas_restricao.invalid || quantas_decisao.invalid"
-                  href="#iniciando" tabindex="-1" data-slide="next" role="button" aria-disabled="true"
-                  (click)="proximoPasso(resolucaoForm)">Avançar</a>
+                <a class="btn btn-success pl-5 pr-5"
+                  [class.disabled]="quantas_restricao.invalid || quantas_decisao.invalid || quantas_interacao.invalid"
+                  href="#iniciando" tabindex="-1" data-slide="next" role="button" aria-disabled="true">Avançar</a>
               </div>
             </div>
             <div class="col-sm">
@@ -50,38 +57,73 @@
             <select required #qual_objetivo="ngModel"
               [class.is-invalid]="qual_objetivo.invalid && (!qual_objetivo.pristine || resolucaoForm.submitted)"
               class="custom-select my-1 mr-sm-2" id="qual_objetivo" name="qual_objetivo"
-              [ngModel]="plexService.qual_objetivo">
-              <option *ngFor="let opcao of opcoes" value="{{ opcao.value }}">{{ opcao.nome }}</option>
+              [(ngModel)]="plexService.qual_objetivo">
+              <option value="true" selected>Maximizar</option>
+              <option value="false">Minimizar</option>
             </select>
           </div>
+
           <div class="row">
-            <div class="col-sm-8">
+            <div class="col-12">
               <div class="jumbotron bg-primary text-white p-0 pl-5 pr-5 pt-3 pb-3">
                 <h4>Segunda Parte</h4>
                 <div class="form-group">
                   <label for="formGroupExampleInput">Função:</label>
-                  <div class="form-inline">
+                  <div class="form-row">
                     <ng-container *ngFor="let variavel of plexService.funcaoObjetivo.variaveis; let i = index;">
-                      <input type="number" #funcao="ngModel" class="form-control mb-1 mr-sm-1" name="funcao_{{i}}"
-                        size="2" [(ngModel)]="variavel.valor">
+                      <div class="col">
+                        <input required type="number" #funcao="ngModel" class="form-control mb-1 mr-sm-1"
+                          name="funcao_{{i}}" [(ngModel)]="variavel.valor">
+                      </div>
+                      <span class="font-weight-bold pt-2 pl-2 pr-2">
+                        X{{ i + 1  }} <span *ngIf="i+1!==plexService.quantas_decisao">+</span>
+                      </span>
                     </ng-container>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="formGroupExampleInput2">Restrições:</label>
+                  <label for="formGroupExampleInput2">Restrições padrão:</label>
+                  <strong>
+                    <span *ngFor="let variavel of plexService.funcaoObjetivo.variaveis; let i = index;">
+                      X{{ i + 1  }} <span *ngIf="i+1!==plexService.quantas_decisao">+</span>
+                    </span> > 0
+                  </strong>
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Restrições adicionais:</label>
                   <ng-container *ngFor="let restricao of plexService.restricoes; let ir = index;">
-                    <div class="form-inline">
+                    <div class="form-row">
+                      <div class="col-1">
+                        <span class="font-weight-bold pt-2 pl-2 pr-2">
+                          {{ir+1}}:
+                        </span>
+                      </div>
                       <ng-container *ngFor="let variavel of restricao.variaveis; let iv = index;">
-                        <input type="number" #restricao="ngModel" class="form-control mb-1 mr-sm-1"
-                          name="restricao_{{ir}}_{{iv}}" size="2" [(ngModel)]="variavel.valor">
+                        <div class="col">
+                          <input type="number" #restricao="ngModel" class="form-control mb-1 mr-sm-1"
+                            name="restricao_{{ir}}_{{iv}}" [(ngModel)]="variavel.valor">
+                        </div>
+                        <span class="font-weight-bold pt-2 pl-2 pr-2">
+                          X{{ iv + 1  }} <span *ngIf="iv+1!==plexService.quantas_decisao">+</span>
+                        </span>
                       </ng-container>
+                      <div class="col-1">
+                        <select required #qual_desicao="ngModel" class="custom-select mr-sm-2"
+                          name="qual_desicao_{{ir}}" [(ngModel)]="restricao.qual_desicao">
+                          <option value="menor" selected>&le;</option>
+                          <option value="maior">&ge;</option>
+                        </select>
+                      </div>
+                      <div class="col-1">
+                        <input type="number" class="form-control mb-1 mr-sm-1" name="">
+                      </div>
                     </div>
                   </ng-container>
                 </div>
               </div>
               <div class="form-group">
-                <a class="btn btn-danger" href="#iniciando" data-slide="prev" role="button">Voltar</a>
-                <button class="btn btn-success" type="submit">Concluir</button>
+                <a class="btn btn-danger pl-5 pr-5" href="#iniciando" data-slide="prev" role="button">Voltar</a>
+                <button class="btn btn-success float-right" type="submit">Concluir</button>
               </div>
             </div>
           </div>

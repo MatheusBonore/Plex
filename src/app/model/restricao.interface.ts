@@ -2,7 +2,8 @@ import { Variaveis } from './variavel.interface';
 
 export interface Restricao {
     variaveis: Variaveis,
-    valorRestricao: number
+    valorRestricao: number,
+    qualRestricao: String
 };
 
 export type Restricoes = Restricao[];
