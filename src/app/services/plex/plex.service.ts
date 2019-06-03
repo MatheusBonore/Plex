@@ -64,7 +64,7 @@ constructor() { }
     variaveis.push(this._novaVariavel);
     i++;
   }
-  return { variaveis, valorRestricao: 0, qualRestricao: 'maior' };
+  return { variaveis, valorOperacao: 0, operador: 'maior' };
 }
 
   private _aplicarNumVariaveisFuncaoObjetivo(numVariaveis: number): void {
@@ -102,13 +102,13 @@ constructor() { }
   }
 
   public _aplicarNumRestricoes(numRestricoes: number): void {
-  let diferenca = this.restricoes.length - numRestricoes;
-  if(diferenca > 0) {
-  this.restricoes = this.restricoes.slice(0, numRestricoes);
-} else if (diferenca < 0) {
-  while (this.restricoes.length < numRestricoes) {
-    this.restricoes.push(this._novaRestricao);
-  }
-}
+    let diferenca = this.restricoes.length - numRestricoes;
+    if(diferenca > 0) {
+      this.restricoes = this.restricoes.slice(0, numRestricoes);
+    } else if (diferenca < 0) {
+      while (this.restricoes.length < numRestricoes) {
+        this.restricoes.push(this._novaRestricao);
+      }
+    }
   }
 }

@@ -108,14 +108,14 @@
                         </span>
                       </ng-container>
                       <div class="col-1">
-                        <select required #qual_desicao="ngModel" class="custom-select mr-sm-2"
-                          name="qual_desicao_{{ir}}" [(ngModel)]="restricao.qual_desicao">
-                          <option value="menor" selected>&le;</option>
-                          <option value="maior">&ge;</option>
+                        <select required #operador="ngModel" class="custom-select mr-sm-2"
+                          name="operador_{{ir}}" [(ngModel)]="restricao.operador">
+                          <option value="<=" selected>&le;</option>
+                          <option value=">=">&ge;</option>
                         </select>
                       </div>
                       <div class="col-1">
-                        <input type="number" class="form-control mb-1 mr-sm-1" name="">
+                        <input type="number" class="form-control mb-1 mr-sm-1" [(ngModel)]="restricao.valorOperacao" name="valorOperacao_{{ir}}">
                       </div>
                     </div>
                   </ng-container>
@@ -123,7 +123,7 @@
               </div>
               <div class="form-group">
                 <a class="btn btn-danger pl-5 pr-5" href="#iniciando" data-slide="prev" role="button">Voltar</a>
-                <button class="btn btn-success float-right" type="submit">Concluir</button>
+                <button class="btn btn-success float-right" type="submit" (click)="gerarSimplex()">Concluir</button>
               </div>
             </div>
           </div>
