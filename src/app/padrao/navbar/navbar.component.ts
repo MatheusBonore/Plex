@@ -28,6 +28,9 @@ export class NavbarComponent implements OnInit {
     }, {
       nome: 'Resolução',
       path: '/resolucoes'
+    }, {
+      nome: 'Mochila',
+      path: '/mochila'
     }
   ];
 
@@ -37,6 +40,11 @@ export class NavbarComponent implements OnInit {
 
   public seEncontraNoLink(link: Link): boolean {
     return this.location.path() === link.path;
+  }
+
+  public isMochila(): boolean {
+    var h: string = this.location.path().substr(1)
+    return ( h == 'mochila' ) ? true : false;
   }
 
 }

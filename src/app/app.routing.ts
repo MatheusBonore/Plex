@@ -2,14 +2,14 @@ import { Routes } from '@angular/router';
 
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
 
+import { NaoMostrarIntroducaoGuard } from './guards/nao-mostrar-introducao/nao-mostrar-introducao.guard';
 import { PadraoComponent } from './padrao/padrao.component';
 import { IniciarComponent } from './padrao/iniciar/iniciar.component';
-
 import { IniciandoComponent } from './padrao/iniciando/iniciando.component';
-import { NaoMostrarIntroducaoGuard } from './guards/nao-mostrar-introducao/nao-mostrar-introducao.guard';
-
 import { AjudaComponent } from './padrao/ajuda/ajuda.component';
 import { ResolucoesComponent } from './padrao/resolucoes/resolucoes.component';
+import { ResultadoComponent } from './padrao/resultado/resultado.component';
+import { MochilaComponent } from './padrao/mochila/mochila.component';
 
 export const appRoutes: Routes = [
   {
@@ -33,6 +33,12 @@ export const appRoutes: Routes = [
       }, {
         path: 'resolucoes',
         component: ResolucoesComponent
+      }, {
+        path: 'resultado',
+        component: ResultadoComponent
+      }, {
+        path: 'mochila',
+        component: MochilaComponent
       }
     ]
   }, {

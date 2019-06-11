@@ -31,11 +31,11 @@ export class IniciandoComponent implements OnInit {
     restricoes.push(this.getFuncaoObjetiva(this.plexService.funcaoObjetivo));
     this.plexService.restricoes.map((restricao: Restricao) => { restricoes.push(restricao) });
     var simplex = new ModeloSimplex(dadosOperacao, restricoes);
-    
-      this.httpClient.request("POST", "localhost:2001/api/simplex", { body: simplex, responseType: "json" })
-        .subscribe(retorno => {
-          console.log("RETORNO API", retorno)
-        },
+
+    this.httpClient.request("POST", "localhost:2001/api/simplex", { body: simplex, responseType: "json" })
+      .subscribe(retorno => {
+        console.log("RETORNO API", retorno)
+      },
         err => {
           console.log(err);
         })
@@ -44,7 +44,7 @@ export class IniciandoComponent implements OnInit {
   private getFuncaoObjetiva(funcaoObjetivo: FuncaoObjetivo): Restricao {
     let variaveis: Variaveis = [];
     funcaoObjetivo.variaveis.map(variavel => { variaveis.push(variavel) });
-    
+
     return { variaveis, valorOperacao: 0, operador: ">=" };
   }
 }

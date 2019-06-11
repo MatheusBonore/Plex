@@ -22,6 +22,8 @@ import { NaoMostrarIntroducaoGuard } from './guards/nao-mostrar-introducao/nao-m
 import { AjudaComponent } from './padrao/ajuda/ajuda.component';
 import { ResolucoesComponent } from './padrao/resolucoes/resolucoes.component';
 import { PlexService } from './services/plex/plex.service';
+import { ResultadoComponent } from './padrao/resultado/resultado.component';
+import { MochilaComponent } from './padrao/mochila/mochila.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { PlexService } from './services/plex/plex.service';
     IniciarComponent,
     IniciandoComponent,
     AjudaComponent,
-    ResolucoesComponent
+    ResolucoesComponent,
+    ResultadoComponent,
+    MochilaComponent
   ],
   imports: [
     BrowserModule,

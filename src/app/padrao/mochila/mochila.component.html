@@ -1,0 +1,11 @@
+<form #mochilaForm="ngForm">
+  <div class="container my-5">
+    <h2>Algoritimo da Mochila.</h2>
+    <div class="form-group">
+      <label for="capacidade">Capacidade da mochila</label>
+      <input type="number" required #capacidade="ngModel"
+        [class.is-invalid]="capacidade.invalid && (!capacidade.pristine || mochilaForm.submitted)" class="form-control"
+        id="capacidade" placeholder="Exemplo: 1" name="capacidade" [(ngModel)]="mochilaService.capacidade">
+    </div>
+  </div>
+</form>
