@@ -16,7 +16,7 @@ export class IniciandoComponent implements OnInit {
 
   @ViewChild('resolucaoForm') public resolucaoForm: NgForm;
 
-  constructor(private plexService: PlexService, private httpClient: HttpClient) { }
+  constructor(public plexService: PlexService, private httpClient: HttpClient) { }
 
   ngOnInit(): void { }
 
