@@ -1,3 +1,4 @@
+//Arquivo server.js para usar o express como http-server do projeto
 const express = require("express");
 const app = express();
 const path = require("path");
