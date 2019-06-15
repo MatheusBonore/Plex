@@ -16,7 +16,7 @@ export class IniciandoComponent implements OnInit {
 
   @ViewChild('resolucaoForm') public resolucaoForm: NgForm;
 
-  constructor(private plexService: PlexService, private httpClient: HttpClient) { }
+  constructor(public plexService: PlexService, private httpClient: HttpClient) { }
 
   ngOnInit(): void { }
 
@@ -32,7 +32,7 @@ export class IniciandoComponent implements OnInit {
     this.plexService.restricoes.map((restricao: Restricao) => { restricoes.push(restricao) });
     var simplex = new ModeloSimplex(dadosOperacao, restricoes);
 
-    this.httpClient.request("POST", "localhost:2001/api/simplex", { body: simplex, responseType: "json" })
+    this.httpClient.request("POST", "http://toosimplex-api.herokuapp.com:2001", { body: simplex, responseType: "json" })
       .subscribe(retorno => {
         console.log("RETORNO API", retorno)
       },
